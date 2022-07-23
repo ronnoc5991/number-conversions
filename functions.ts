@@ -6,7 +6,7 @@ const numberSystemBases: Record<NumberSystem, number> = {
   binary: 2,
 };
 
-const digitConversions: Array<Record<NumberSystem, string>> = [
+const digitLookupTable: Array<Record<NumberSystem, string>> = [
   { decimal: '0', binary: '0', hexadecimal: '0' },
   { decimal: '1', binary: '1', hexadecimal: '1' },
   { decimal: '2', binary: '10', hexadecimal: '2' },
@@ -26,7 +26,7 @@ const digitConversions: Array<Record<NumberSystem, string>> = [
 ];
 
 function convertDigit(digit: string, fromNumberSystem: NumberSystem, toNumberSystem: NumberSystem) {
-  return digitConversions.find((digits) => digits[fromNumberSystem] === digit)[toNumberSystem];
+  return digitLookupTable.find((digits) => digits[fromNumberSystem] === digit)[toNumberSystem];
 }
 
 function convertBinaryToDecimal(binaryNumberAsString: string): number {
