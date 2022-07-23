@@ -7,14 +7,14 @@ const numberSystemBases: Record<NumberSystem, number> = {
 };
 
 const digitConversions: Array<Record<NumberSystem, string>> = [
-  { decimal: '0', binary: '0000', hexadecimal: '0' },
-  { decimal: '1', binary: '0001', hexadecimal: '1' },
-  { decimal: '2', binary: '0010', hexadecimal: '2' },
-  { decimal: '3', binary: '0011', hexadecimal: '3' },
-  { decimal: '4', binary: '0100', hexadecimal: '4' },
-  { decimal: '5', binary: '0101', hexadecimal: '5' },
-  { decimal: '6', binary: '0110', hexadecimal: '6' },
-  { decimal: '7', binary: '0111', hexadecimal: '7' },
+  { decimal: '0', binary: '0', hexadecimal: '0' },
+  { decimal: '1', binary: '1', hexadecimal: '1' },
+  { decimal: '2', binary: '10', hexadecimal: '2' },
+  { decimal: '3', binary: '11', hexadecimal: '3' },
+  { decimal: '4', binary: '100', hexadecimal: '4' },
+  { decimal: '5', binary: '101', hexadecimal: '5' },
+  { decimal: '6', binary: '110', hexadecimal: '6' },
+  { decimal: '7', binary: '111', hexadecimal: '7' },
   { decimal: '8', binary: '1000', hexadecimal: '8' },
   { decimal: '9', binary:  '1001', hexadecimal: '9' },
   { decimal: '10', binary: '1010', hexadecimal: 'A' },
@@ -66,7 +66,7 @@ function convertNumberFromDecimal(decimalNumber: number, toNumberSystem: 'binary
 
   while (quotient > 0) {
     let remainder = quotient % base;
-    const newDigit = toNumberSystem === 'binary' ? `${remainder}` : convertDigit(`${remainder}`, 'decimal', toNumberSystem);
+    const newDigit = convertDigit(`${remainder}`, 'decimal', toNumberSystem);
     digits.unshift(`${newDigit}`);
     quotient = Math.floor(quotient / base);
   }
